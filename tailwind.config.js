@@ -7,7 +7,18 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      extend: {
+        fontFamily: {
+          inter: ["Inter", "sans-serif"],
+          work: ["Work Sans", "sans-serif"],
+        },
+        colors: {
+          // primary: "#0f0f93",
+          primary: "#1e3a8a",
+        }
+      },
+    },
   },
   plugins: [
     require("flowbite/plugin")
