@@ -17,8 +17,9 @@ import React, {
     }, [username, password])
   
     return (
-      <div className="h-screen flex items-center justify-center text-white">
-        <div className="mx-[15%] px-[5%] bg-primary font-work pb-[6rem] pt-[5rem] rounded-3xl">
+      <div className="h-screen flex items-center justify-center">
+        <img className="absolute top-10 left-20 w-[10rem] h-[10rem]" src="logo.jpg" alt="" />
+        <div className="mx-[15%] px-[5%] bg-primary font-work pb-[6rem] pt-[5rem] rounded-3xl bg-blue-700">
           <h1 className="text-center mb-5 font-bold text-2xl">LOG IN TO STUDENT<br/> DASHBOARD</h1>
           <form className="flex flex-col gap-4">
             <div>
@@ -55,11 +56,16 @@ import React, {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <Link href="/dashboard">
-              <Button className="text-white font-work font-bold w-full">
-                LOG IN
-              </Button>
-            </Link>
+            <div className="flex justify-end">
+                <Button 
+                color="gray"
+                className="text-black font-work font-bold bg-white w-1/2">
+                    <Link href="/dashboard">
+                        LOG IN
+                    </Link>
+                </Button>
+            </div>
+            
             {/*TODO change to Button after adding backend logic*/}
             {/*<Button type="submit" color="light">*/}
             {/*  LOG IN*/}
