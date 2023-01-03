@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-import { TextInput }  from "flowbite-react";
+import React, {useEffect, useState} from "react";
+import { TextInput, Button }  from "flowbite-react";
 import RequestCard from "../../components/dashboard/RequestCard";
 import AddRequestModal from "../../components/dashboard/AddRequestModal";
 import {FaSearch} from "react-icons/fa";
 import axios from "../../server/index";
+import {TiArrowUnsorted} from "react-icons/ti";
 
 
 // const info = [
@@ -19,6 +20,32 @@ import axios from "../../server/index";
 
 const Dashboard = ({lrn, data}) => {
   const [search, setSearch] = useState("");
+
+  const [filteredRequests, setFilteredRequests] = useState(data);
+
+  useEffect(() => {
+    const documentMatches = data.filter((request) => request.document.toLowerCase().includes(search.toLowerCase()));
+    const purposeMatches = data.filter((request) => request.purpose.toLowerCase().includes(search.toLowerCase()));
+    const matches = [...documentMatches, ...purposeMatches];
+    const uniqueMatches = [...new Set(matches)];
+
+    setFilteredRequests(uniqueMatches);
+  }, [search]);
+
+  const handleSortByStatus = () => {
+    const sortedRequests = filteredRequests.sort((a, b) => {
+      if (a.status < b.status) {
+        return -1;
+      }
+      if (a.status > b.status) {
+        return 1;
+      }
+      return 0;
+    });
+
+    console.log("Hellow")
+    setFilteredRequests(sortedRequests);
+  }
 
   return (
     <div>
@@ -39,6 +66,10 @@ const Dashboard = ({lrn, data}) => {
           <h1 className="font-work text-primary text-3xl font-bold">All Requests</h1>
           <div className="flex gap-4">
             <AddRequestModal lrnProps={lrn}/>
+            <Button color="purple" onClick={() => handleSortByStatus()} className="font-work uppercase font-bold">
+              <TiArrowUnsorted className="mr-2" />
+              Sort by Status
+            </Button>
             <TextInput
               id="search"
               type="text"
@@ -47,11 +78,12 @@ const Dashboard = ({lrn, data}) => {
               onChange={(e) => setSearch(e.target.value)}
               className="font-work w-[20rem] h-[2.5rem] text-sm"
             />
+
           </div>
         </div>
-        <div className="flex gap-10 my-5 flex-wrap justify-center">
+        <div className="flex gap-10 my-5 flex-wrap justify-center overflow-y-auto">
           {
-            (data.map((item, index) => (
+            (filteredRequests.map((item, index) => (
               <RequestCard data={item} key={index} />
             )))
           }
