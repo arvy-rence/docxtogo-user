@@ -95,7 +95,7 @@ const Dashboard = ({lrn, data}) => {
 
 
 export async function getStaticProps() {
-  const lrn = "136814060704"
+  const lrn = "152365252715"
 
   const {data} = await axios.get(`/request/${lrn}`)
   console.log(data)
