@@ -13,7 +13,7 @@ const Status = () => {
                     <div className="w-4/5">
                         <Progress 
                             // progress={21}
-                            progress={46}
+                            progress={45}
                             // progress={73}
                             // progress={100} 
                             color="red"

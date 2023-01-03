@@ -2,7 +2,6 @@ import React from "react";
 import {Label, TextInput, Dropdown, Textarea, Button} from "flowbite-react";
 
 const Request = () => {
-  
     return (
         <div>
             <img src="bg.jpg" alt="" className="w-full h-[16vh] object-fit" />
@@ -10,9 +9,9 @@ const Request = () => {
                 <div className="bg-white rounded-lg h-full py-[3%] px-[2%] flex flex-col gap-4">
                     <div className="w-1/4">
                         <TextInput
-                        id="nameofrequestor"
-                        type="text"
-                        placeholder="Name of Requestor"
+                            id="nameofrequestor"
+                            type="text"
+                            placeholder="Name of Requestor"
                         />
                     </div>
 
@@ -55,8 +54,8 @@ const Request = () => {
                     </div>
 
                     <Dropdown
-                    label="Document Type"
-                    inline={true}
+                        label="Document Type"
+                        inline={true}
                     >
                         <Dropdown.Item>
                             Form 138
@@ -92,8 +91,6 @@ const Request = () => {
                             Submit
                         </Button>
                     </div>
-                    
-
                 </div>
             </div>
         </div>

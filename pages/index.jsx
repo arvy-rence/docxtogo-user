@@ -20,14 +20,14 @@ import React, {
       <div className="h-screen flex items-center justify-center">
         <img className="absolute top-10 left-20 w-[10rem] h-[10rem]" src="logo.jpg" alt="" />
         <div className="mx-[15%] px-[5%] bg-primary font-work pb-[6rem] pt-[5rem] rounded-3xl bg-blue-700">
-          <h1 className="text-center mb-5 font-bold text-2xl">LOG IN TO STUDENT<br/> DASHBOARD</h1>
+          <h1 className="text-center mb-5 font-bold text-2xl text-white">LOG IN TO STUDENT<br/> DASHBOARD</h1>
           <form className="flex flex-col gap-4">
             <div>
               <div className="mb-2 block">
                 <Label
                   htmlFor="username"
                   value="Username"
-                  class="text-white font-work"
+                  className="text-white font-work"
                 />
               </div>
               <TextInput
@@ -44,7 +44,7 @@ import React, {
                 <Label
                   htmlFor="password1"
                   value="Password"
-                  class="text-white font-work"
+                  className="text-white font-work"
                 />
               </div>
               <TextInput
