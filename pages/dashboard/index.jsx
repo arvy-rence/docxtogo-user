@@ -49,7 +49,7 @@ const Dashboard = ({lrn, data}) => {
 
   return (
     <div>
-      <img src="/banner.png" alt="" className="w-full h-[20vh]" />
+      <img src="https://i.ibb.co/W26yBX7/banner.png" alt="" className="w-full h-[20vh]" />
       <div>
         <div className="flex flex-col items-center gap-2 font-work">
           <h1 className="text-primary text-4xl font-bold text-center mt-5">
