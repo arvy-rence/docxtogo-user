@@ -50,6 +50,9 @@ const Dashboard = ({lrn, data}) => {
   return (
     <div>
       <img src="https://i.ibb.co/W26yBX7/banner.png" alt="" className="w-full h-[20vh]" />
+      <Button className="absolute top-40 right-20 w-[10rem] h-[3rem] font-work font-bold" href="/">
+        LOGOUT
+      </Button>
       <div>
         <div className="flex flex-col items-center gap-2 font-work">
           <h1 className="text-primary text-4xl font-bold text-center mt-5">

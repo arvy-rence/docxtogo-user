@@ -59,10 +59,9 @@ import React, {
             <div className="flex justify-end">
                 <Button 
                 color="gray"
-                className="text-black font-work font-bold bg-white w-1/2">
-                    <Link href="/dashboard">
-                        LOG IN
-                    </Link>
+                className="text-black font-work font-bold bg-white w-1/2"
+                href="/dashboard">
+                    LOG IN
                 </Button>
             </div>
             
