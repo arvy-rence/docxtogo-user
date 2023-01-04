@@ -5,6 +5,8 @@ import AddRequestModal from "../../components/dashboard/AddRequestModal";
 import {FaSearch} from "react-icons/fa";
 import axios from "../../server/index";
 import {TiArrowUnsorted} from "react-icons/ti";
+import {HiRefresh} from "react-icons/hi";
+import {useRouter} from "next/router";
 
 
 // const info = [
@@ -20,8 +22,8 @@ import {TiArrowUnsorted} from "react-icons/ti";
 
 const Dashboard = ({lrn, data}) => {
   const [search, setSearch] = useState("");
-
   const [filteredRequests, setFilteredRequests] = useState(data);
+  const router = useRouter();
 
   useEffect(() => {
     const documentMatches = data.filter((request) => request.document.toLowerCase().includes(search.toLowerCase()));
@@ -69,9 +71,9 @@ const Dashboard = ({lrn, data}) => {
           <h1 className="font-work text-primary text-3xl font-bold">All Requests</h1>
           <div className="flex gap-4">
             <AddRequestModal lrnProps={lrn}/>
-            <Button color="purple" onClick={() => handleSortByStatus()} className="font-work uppercase font-bold">
-              <TiArrowUnsorted className="mr-2" />
-              Sort by Status
+            <Button color="success" onClick={() => router.reload()} className="font-work uppercase font-bold">
+              <HiRefresh className="mr-2" />
+              Refresh
             </Button>
             <TextInput
               id="search"
