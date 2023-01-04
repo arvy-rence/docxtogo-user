@@ -7,6 +7,9 @@ import axios from "../../server/index";
 import {TiArrowUnsorted} from "react-icons/ti";
 import {HiRefresh} from "react-icons/hi";
 import {useRouter} from "next/router";
+import toast, {Toaster} from "react-hot-toast";
+import {delay} from "../../hooks/delay";
+import {toastOptions} from "../../styles/modalOptions";
 
 
 // const info = [
@@ -49,8 +52,19 @@ const Dashboard = ({lrn, data}) => {
     setFilteredRequests(sortedRequests);
   }
 
+  async function refreshHandler() {
+    toast('Checking for new data!', {
+      ...toastOptions,
+      duration: 2000,
+      icon: '🔄',
+    });
+    await delay(2000)
+    router.reload()
+  }
+
   return (
     <div>
+      <Toaster/>
       <img src="https://i.ibb.co/W26yBX7/banner.png" alt="" className="w-full h-[20vh]" />
       <Button className="absolute top-40 right-20 w-[10rem] h-[3rem] font-work font-bold" href="/">
         LOGOUT
@@ -71,7 +85,7 @@ const Dashboard = ({lrn, data}) => {
           <h1 className="font-work text-primary text-3xl font-bold">All Requests</h1>
           <div className="flex gap-4">
             <AddRequestModal lrnProps={lrn}/>
-            <Button color="success" onClick={() => router.reload()} className="font-work uppercase font-bold">
+            <Button color="success" onClick={() => refreshHandler()} className="font-work uppercase font-bold">
               <HiRefresh className="mr-2" />
               Refresh
             </Button>
@@ -83,7 +97,6 @@ const Dashboard = ({lrn, data}) => {
               onChange={(e) => setSearch(e.target.value)}
               className="font-work w-[20rem] h-[2.5rem] text-sm"
             />
-
           </div>
         </div>
         <div className="flex gap-10 my-5 flex-wrap justify-center overflow-y-auto">
