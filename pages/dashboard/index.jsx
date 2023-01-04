@@ -107,7 +107,8 @@ export async function getStaticProps() {
     props: {
       lrn: lrn,
       data: data.requests || []
-    }
+    },
+    revalidate: 5
   }
 }
 
