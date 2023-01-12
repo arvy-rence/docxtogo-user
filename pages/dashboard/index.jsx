@@ -4,7 +4,6 @@ import RequestCard from "../../components/dashboard/RequestCard";
 import AddRequestModal from "../../components/dashboard/AddRequestModal";
 import {FaSearch} from "react-icons/fa";
 import axios from "../../server/index";
-import {TiArrowUnsorted} from "react-icons/ti";
 import {HiRefresh} from "react-icons/hi";
 import {useRouter} from "next/router";
 import toast, {Toaster} from "react-hot-toast";
@@ -52,7 +51,7 @@ const Dashboard = ({lrn, data}) => {
     <div>
       <Toaster/>
       <img src="https://i.ibb.co/W26yBX7/banner.png" alt="" className="w-full h-[20vh]" />
-      <Button className="absolute top-40 right-20 w-[10rem] h-[3rem] font-work font-bold" href="/">
+      <Button className="absolute top-[55px] right-20 w-[10rem] h-[3rem] font-work font-bold" href="/">
         LOGOUT
       </Button>
       <div>
