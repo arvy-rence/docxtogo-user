@@ -142,7 +142,7 @@ const AddRequestModal = ({lrnProps}) => {
                 <div className="block">
                   <Label
                     htmlFor="strand"
-                    value="Document Type to Request"
+                    value="Document Request Purpose"
                   />
                 </div>
                 <Select
@@ -176,7 +176,7 @@ const AddRequestModal = ({lrnProps}) => {
                 </div>
                 <Textarea
                   id="purpose"
-                  placeholder="Document Request Purpose"
+                  placeholder="Specify Purpose"
                   required={true}
                   rows={2}
                   onChange={(e) => setOtherPurpose(e.target.value)}
