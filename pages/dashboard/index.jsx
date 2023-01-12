@@ -37,21 +37,6 @@ const Dashboard = ({lrn, data}) => {
     setFilteredRequests(uniqueMatches);
   }, [search]);
 
-  const handleSortByStatus = () => {
-    const sortedRequests = filteredRequests.sort((a, b) => {
-      if (a.status < b.status) {
-        return -1;
-      }
-      if (a.status > b.status) {
-        return 1;
-      }
-      return 0;
-    });
-
-    console.log("Hellow")
-    setFilteredRequests(sortedRequests);
-  }
-
   async function refreshHandler() {
     toast('Checking for new data!', {
       ...toastOptions,
@@ -81,8 +66,7 @@ const Dashboard = ({lrn, data}) => {
         </div>
       </div>
       <div className="mx-[5%] mt-5 flex flex-col">
-        <div className="flex justify-between">
-          <h1 className="font-work text-primary text-3xl font-bold">All Requests</h1>
+        <div className="flex justify-end">
           <div className="flex gap-4">
             <AddRequestModal lrnProps={lrn}/>
             <Button color="success" onClick={() => refreshHandler()} className="font-work uppercase font-bold">
@@ -99,6 +83,7 @@ const Dashboard = ({lrn, data}) => {
             />
           </div>
         </div>
+        <h1 className="font-work text-primary text-3xl font-bold">All Requests</h1>
         <div className="flex gap-10 my-5 flex-wrap justify-center overflow-y-auto">
           {
             (filteredRequests.map((item, index) => (
@@ -113,6 +98,7 @@ const Dashboard = ({lrn, data}) => {
 
 
 export async function getStaticProps() {
+  // change this to a registered LRN to test operations for that specific student
   const lrn = "152365252715"
 
   const {data} = await axios.get(`/request/${lrn}`)

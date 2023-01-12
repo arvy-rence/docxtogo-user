@@ -13,13 +13,14 @@ const AddRequestModal = ({lrnProps}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [contactNumber, setContactNumber] = useState("");
   const [documentType, setDocumentType] = useState("1");
-  const [purpose, setPurpose] = useState("None provided");
+  const [purpose, setPurpose] = useState("For Scholarship");
+  const [otherPurpose, setOtherPurpose] = useState("")
   const [lrn, setLrn] = useState(lrnProps);
   const router = useRouter();
 
   useEffect(() => {
-    console.table({contactNumber, documentType, purpose, lrn});
-  }, [contactNumber, documentType, purpose, lrn])
+    console.table({contactNumber, documentType, purpose, lrn, otherPurpose});
+  }, [contactNumber, documentType, purpose, lrn, otherPurpose])
 
   // check if fields are empty
   const checkFields = () => {
@@ -38,7 +39,7 @@ const AddRequestModal = ({lrnProps}) => {
         axios.post("/request/create", {
           contact: contactNumber,
           document: parsedDocumentType,
-          purpose: purpose,
+          purpose: purpose + (purpose === "Other" ? `: ${otherPurpose}` : ""),
           lrn: lrn
         }),
         {
@@ -103,7 +104,7 @@ const AddRequestModal = ({lrnProps}) => {
                 type="text"
                 icon={FaPhoneAlt}
                 required={true}
-                placeholder="Enter Contact Number"
+                placeholder="Enter Mobile Number"
                 onChange={(e) => setContactNumber(e.target.value)}
               />
             </div>
@@ -122,7 +123,7 @@ const AddRequestModal = ({lrnProps}) => {
                   onChange={(e) => setDocumentType(e.target.value)}
                 >
                   <option value="1">
-                    Form 138
+                    Certified True Copy of Form 137
                   </option>
                   <option value="2">
                     Good Moral
@@ -131,32 +132,57 @@ const AddRequestModal = ({lrnProps}) => {
                     Certificate of Enrolment
                   </option>
                   <option value="4">
-                    Batchwide Certificate of Ranking
-                  </option>
-                  <option value="5">
-                    Strandwide Certificate of Ranking
-                  </option>
-                  <option value="6">
-                    Certified True Copy of Ranking
+                    Batchwide/Strandwide Certificate of Ranking
                   </option>
                 </Select>
               </div>
             </div>
-            <div id="textarea">
-              <div className="mb-2 block">
-                <Label
-                  htmlFor="purpose"
-                  value="Request Purpose"
+            <div>
+              <div id="select">
+                <div className="block">
+                  <Label
+                    htmlFor="strand"
+                    value="Document Type to Request"
+                  />
+                </div>
+                <Select
+                  id="strand"
+                  required={true}
+                  icon={BiBookBookmark}
+                  onChange={(e) => setPurpose(e.target.value)}
+                >
+                  <option value="For Scholarship">
+                    For Scholarship
+                  </option>
+                  <option value="For College Admission">
+                    For College Admission
+                  </option>
+                  <option value="For Financial Assistance">
+                    For Financial Assistance
+                  </option>
+                  <option value="Other">
+                    Other
+                  </option>
+                </Select>
+              </div>
+            </div>
+            {purpose === "Other" ? (
+              <div id="textarea">
+                <div className="mb-2 block">
+                  <Label
+                    htmlFor="purpose"
+                    value="Request Purpose"
+                  />
+                </div>
+                <Textarea
+                  id="purpose"
+                  placeholder="Document Request Purpose"
+                  required={true}
+                  rows={2}
+                  onChange={(e) => setOtherPurpose(e.target.value)}
                 />
               </div>
-              <Textarea
-                id="purpose"
-                placeholder="Document Request Purpose"
-                required={true}
-                rows={2}
-                onChange={(e) => setPurpose(e.target.value)}
-              />
-            </div>
+            ) : null}
             <div className="w-full">
               <Button type="submit" className="w-full" onClick={() => handleCreateRequest()}>
                 Create New Document Request
