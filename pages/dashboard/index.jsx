@@ -10,6 +10,7 @@ import {useRouter} from "next/router";
 import toast, {Toaster} from "react-hot-toast";
 import {delay} from "../../hooks/delay";
 import {toastOptions} from "../../styles/modalOptions";
+import Footer from "../../components/Footer";
 
 
 // const info = [
@@ -92,6 +93,7 @@ const Dashboard = ({lrn, data}) => {
           }
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
