@@ -1,7 +1,5 @@
 import React from "react";
 import {Footer} from "flowbite-react";
-import {FooterDivider} from "flowbite-react/lib/esm/components/Footer/FooterDivider";
-
 
 const CustomFooter = () => {
   return (
