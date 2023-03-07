@@ -12,7 +12,7 @@ export default function AccountDetails({ studentInfo }) {
   }
   return (
     <>
-      <div className='flex items-center justify-center w-full h-screen font-work'>
+      <div className='flex items-center justify-center w-full h-screen font-work my-10'>
         <div className='flex flex-col items-center'>
           <h2 className='text-4xl font-bold mb-6'>STUDENT INFORMATION</h2>
           <Card imgSrc='https://i.ibb.co/Scj76jm/ph.jpg' className=''>
