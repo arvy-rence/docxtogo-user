@@ -76,7 +76,7 @@ const Dashboard = ({ lrn, data }) => {
         <div className='flex justify-between mb-5'>
           <Button
             color={'dark'}
-            href={'/dashboard/account'}
+            href={`/dashboard/${lrn}`}
             className='font-work uppercase font-bold'
           >
             <MdAccountCircle className='mr-2' />
@@ -114,7 +114,7 @@ const Dashboard = ({ lrn, data }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // change this to a registered LRN to test operations for that specific student
   const lrn = '152365252715'
 
@@ -126,7 +126,6 @@ export async function getStaticProps() {
       lrn: lrn,
       data: data.requests || [],
     },
-    revalidate: 5,
   }
 }
 

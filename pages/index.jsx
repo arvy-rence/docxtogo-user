@@ -9,6 +9,10 @@ const Login = () => {
   const [password, setPassword] = useState('')
 
   useEffect(() => {
+    window.sessionStorage.clear()
+  }, [])
+
+  useEffect(() => {
     console.log(username)
     console.log(password)
   }, [username, password])
