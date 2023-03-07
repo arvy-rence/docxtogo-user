@@ -23,9 +23,9 @@ export default function AccountDetails({ studentInfo }) {
               <h6 className='text-lg font-bold tracking-tight uppercase text-gray-900 text-center'>
                 LRN: {studentInfo.lrn}
               </h6>
-              <div id='fileUpload' className='mt-3'>
+              {/* <div id='fileUpload' className='mt-3'>
                 <FileInput id='file' onChange={handleFileSelect} helperText='Select new picture' />
-              </div>
+              </div> */}
             </div>
             <div className='flex gap-4'>
               <Badge color='info' size='lg'>
