@@ -9,6 +9,7 @@
     "axios": "^1.2.2",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
+    "jotai": "^2.0.3",
     "moment": "^2.29.4",
     "next": "latest",
     "react": "18.2.0",
