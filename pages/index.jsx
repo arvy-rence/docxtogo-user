@@ -24,13 +24,13 @@ const Login = () => {
         <form className='flex flex-col gap-4'>
           <div>
             <div className='mb-2 block'>
-              <Label htmlFor='username' value='Username' className='text-white font-work' />
+              <Label htmlFor='lrn' value='Username' className='text-white font-work' />
             </div>
             <TextInput
-              id='username'
+              id='lrn'
               type='text'
               icon={BiUserCircle}
-              placeholder='Username'
+              placeholder='LRN'
               required={true}
               onChange={e => setUsername(e.target.value)}
             />
@@ -53,6 +53,9 @@ const Login = () => {
               color='gray'
               className='text-black font-work font-bold bg-white w-1/2'
               href='/dashboard'
+              onClick={() => {
+                window.sessionStorage.setItem('lrn', username)
+              }}
             >
               LOG IN
             </Button>
